@@ -1,3 +1,11 @@
-export default function Home() {
-  return <h1 className="text-2xl font-bold">Products coming soon</h1>;
+import { getProducts } from "@/lib/api";
+import ProductList from "@/components/ProductList";
+
+// products are fetched on the server on every request (SSR)
+export const dynamic = "force-dynamic";
+
+export default async function Home() {
+  const products = await getProducts();
+
+  return <ProductList initialProducts={products} />;
 }
