@@ -1,5 +1,6 @@
 import Link from "next/link";
 import UserGreeting from "./UserGreeting";
+import CartButton from "./CartButton";
 
 export default function Header() {
   return (
@@ -16,7 +17,9 @@ export default function Header() {
           LOGO
         </Link>
 
-        <div className="w-24 sm:w-40"></div>
+        <div className="w-24 sm:w-40 flex justify-end">
+          <CartButton />
+        </div>
       </div>
     </header>
   );

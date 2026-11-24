@@ -1,11 +1,16 @@
+"use client";
+
 import Image from "next/image";
 import { Product } from "@/types";
+import { useCartStore } from "@/store/cartStore";
 
 interface ProductCardProps {
   product: Product;
 }
 
 export default function ProductCard({ product }: ProductCardProps) {
+  const addToCart = useCartStore((state) => state.addToCart);
+
   return (
     <div className="flex flex-col bg-white shadow-md">
       <div className="relative h-56 bg-gray-100">
@@ -28,6 +33,12 @@ export default function ProductCard({ product }: ProductCardProps) {
 
         <div className="mt-auto flex items-center justify-between">
           <span className="text-sm text-gray-700">price {product.price}$</span>
+          <button
+            onClick={() => addToCart(product)}
+            className="bg-blue-600 text-white text-sm px-5 py-2 hover:bg-blue-700"
+          >
+            Add to cart
+          </button>
         </div>
       </div>
     </div>
